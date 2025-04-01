@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>машинки и звездочки</title>
+    <link rel="stylesheet" href="Styles/world.css">
+    <script type="module" src="Scripts/game.js"></script>
+</head>
+<body>
+    <div id="menu">
+        <h1>машинки и звездочки</h1>
+        <div class="input-group">
+            <label for="player-name">Ваше имя:</label>
+            <input type="text" id="player-name" placeholder="Игрок 1">
+        </div>
+        <div class="input-group">
+            <label for="car-color">Цвет машинки:</label>
+            <input type="color" id="car-color" value="#ff0000">
+        </div>
+        <button id="start-button">Начать игру</button>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <div id="viewport">
+            <div id="world"></div>
+        </div>
+        <div id="score">Собрано звёзд: <span>0</span></div>
+    </div>
+
+    <script type="module" src="Scripts/game.js"></script>
+</body>
+</html>

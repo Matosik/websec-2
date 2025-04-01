@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f0f0f0;
+}
+
+#menu {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin: 15px 0;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+.hidden {
+    display: none;
+}
+
+#game-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#viewport {
+    width: 800px;
+    height: 600px;
+    border: 2px solid black;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#world {
+    width: 5000px;
+    height: 5000px;
+    position: absolute;
+    background: #e0e0e0;
+}
+
+.car {
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    border-radius: 3px 8px 8px 3px; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+
+    position: relative;
+}
+
+.car::before { 
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 10px;
+    height: 16px;
+    background: #8ec5fc;
+    border-radius: 0 5px 5px 0;
+}
+
+
+.car.moving-up {
+    border-radius: 8px 3px 3px 8px !important;
+}
+.car.moving-down {
+    border-radius: 3px 8px 8px 3px !important;
+}
+
+.star {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background: gold;
+    border-radius: 50%;
+}
+
+#score {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: black;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
