@@ -4,13 +4,12 @@ export class Camera {
         this.world = worldElement;
         this.viewport = viewportElement;
         
-        // Границы безопасной зоны (в процентах от размера viewport)
+
         this.safeZone = {
-            width: 0.3,  
-            height: 0.3  
+            width: 0.1,  
+            height: 0.1  
         };
-        
-        // Текущее смещение камеры
+
         this.offsetX = 0;
         this.offsetY = 0;
     }

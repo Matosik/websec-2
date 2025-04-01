@@ -1,7 +1,6 @@
 import { Car } from './car.js';
 import { Star } from './star.js';
 import { Camera } from './camera.js';
-
 // DOM-элементы
 const menu = document.getElementById("menu");
 const gameContainer = document.getElementById("game-container");
@@ -12,11 +11,8 @@ const scoreElement = document.getElementById("score").querySelector("span");
 const world = document.getElementById("world");
 const viewport = document.getElementById("viewport");
 
-// Игровые объекты
-let playerCar;
-let stars = [];
-let score = 0;
-let camera;
+// Игровые переменные
+let playerCar, camera, stars = [], cars = [], score = 0;
 
 // Запуск игры
 startButton.addEventListener("click", () => {
@@ -29,18 +25,18 @@ startButton.addEventListener("click", () => {
     initGame(playerName, carColor);
 });
 
-
 function initGame(name, color) {
+    playerCar = new Car(1500, 1500, color, name);
+    cars.push(playerCar);
+    cars.push(new Car(1400, 1400, "#00ff00", "Бот 1"));
+    cars.push(new Car(1600, 1600, "#0000ff", "Бот 2"));
 
-    playerCar = new Car(Math.random() * 4000, Math.random() * 4000, color, name);
-    
     camera = new Camera(playerCar, world, viewport);
-    
-    for (let i = 0; i < 20; i++) {
+
+    for (let i = 0; i < 15; i++) {
         stars.push(new Star());
     }
-    
-    // Запускаем игровой цикл
+
     gameLoop();
 }
 
@@ -51,7 +47,7 @@ function checkStarCollision() {
         const dy = playerCar.y - star.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 30) {
+        if (distance < 25) {
             world.removeChild(star.element);
             stars.splice(index, 1);
             stars.push(new Star());
@@ -62,17 +58,32 @@ function checkStarCollision() {
 }
 
 // Управление
+const keysPressed = { up: false, down: false, left: false, right: false };
+
 document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowUp" || e.key === "w") playerCar.accelerate("up");
-    if (e.key === "ArrowDown" || e.key === "s") playerCar.accelerate("down");
-    if (e.key === "ArrowLeft" || e.key === "a") playerCar.accelerate("left");
-    if (e.key === "ArrowRight" || e.key === "d") playerCar.accelerate("right");
+    if (e.key === "ArrowUp" || e.key === "w") keysPressed.up = true;
+    if (e.key === "ArrowDown" || e.key === "s") keysPressed.down = true;
+    if (e.key === "ArrowLeft" || e.key === "a") keysPressed.left = true;
+    if (e.key === "ArrowRight" || e.key === "d") keysPressed.right = true;
+});
+
+document.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowUp" || e.key === "w") keysPressed.up = false;
+    if (e.key === "ArrowDown" || e.key === "s") keysPressed.down = false;
+    if (e.key === "ArrowLeft" || e.key === "a") keysPressed.left = false;
+    if (e.key === "ArrowRight" || e.key === "d") keysPressed.right = false;
 });
 
 // Игровой цикл
 function gameLoop() {
-    playerCar.move();
+    if (keysPressed.up) playerCar.accelerate("up");
+    if (keysPressed.down) playerCar.accelerate("down");
+    if (keysPressed.left) playerCar.accelerate("left");
+    if (keysPressed.right) playerCar.accelerate("right");
+
+    cars.forEach(car => car.move(cars));
     camera.update();
     checkStarCollision();
+
     requestAnimationFrame(gameLoop);
 }

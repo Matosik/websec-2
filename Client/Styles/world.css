@@ -60,6 +60,11 @@ button:hover {
     height: 5000px;
     position: absolute;
     background: #e0e0e0;
+    background-color: #e0e0e0;
+    background-image: 
+        linear-gradient(#ccc 1px, transparent 1px),
+        linear-gradient(90deg, #ccc 1px, transparent 1px);
+    background-size: 100px 100px;
 }
 
 .car {
