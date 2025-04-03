@@ -1,3 +1,14 @@
+.car {
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    border-radius: 3px 8px 8px 3px; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+
+    position: relative;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -67,34 +78,6 @@ button:hover {
     background-size: 100px 100px;
 }
 
-.car {
-    width: 40px;
-    height: 20px;
-    position: absolute;
-    border-radius: 3px 8px 8px 3px; 
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-
-    position: relative;
-}
-
-.car::before { 
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 2px;
-    width: 10px;
-    height: 16px;
-    background: #8ec5fc;
-    border-radius: 0 5px 5px 0;
-}
-
-
-.car.moving-up {
-    border-radius: 8px 3px 3px 8px !important;
-}
-.car.moving-down {
-    border-radius: 3px 8px 8px 3px !important;
-}
 
 .star {
     width: 15px;

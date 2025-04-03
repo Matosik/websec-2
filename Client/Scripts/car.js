@@ -6,7 +6,7 @@ export class Car {
         this.speedX = 0;
         this.speedY = 0;
         this.maxSpeed = 6;
-        this.acceleration = 0.3;
+        this.acceleration = 0.2;
         this.friction = 0.95;
         this.color = color;
         this.name = name;
@@ -62,20 +62,22 @@ export class Car {
         this.x += this.speedX;
         this.y += this.speedY;
 
+        const coef_cars = 0.5;
+        const coef_border = 0.5;
 
         const worldWidth = 5000, worldHeight = 5000;
         if (this.x < 0) {
-            this.speedX = -this.speedX * 0.5;
+            this.speedX = -this.speedX * coef_border;
             this.x = 0;
         } else if (this.x > worldWidth - 40) {
-            this.speedX = -this.speedX * 0.5;
+            this.speedX = -this.speedX * coef_border;
             this.x = worldWidth - 40;
         }
         if (this.y < 0) {
-            this.speedY = -this.speedY * 0.5;
+            this.speedY = -this.speedY * coef_border;
             this.y = 0;
         } else if (this.y > worldHeight - 20) {
-            this.speedY = -this.speedY * 0.5;
+            this.speedY = -this.speedY * coef_border;
             this.y = worldHeight - 20;
         }
 
@@ -83,10 +85,10 @@ export class Car {
             if (otherCar !== this && this.isCollidingWith(otherCar)) {
                 const tempSpeedX = this.speedX;
                 const tempSpeedY = this.speedY;
-                this.speedX = otherCar.speedX * 0.5;
-                this.speedY = otherCar.speedY * 0.5;
-                otherCar.speedX = tempSpeedX * 0.5;
-                otherCar.speedY = tempSpeedY * 0.5;
+                this.speedX = otherCar.speedX * coef_cars;
+                this.speedY = otherCar.speedY * coef_cars;
+                otherCar.speedX = tempSpeedX * coef_cars;
+                otherCar.speedY = tempSpeedY * coef_cars;
 
 
                 const dx = this.x - otherCar.x;

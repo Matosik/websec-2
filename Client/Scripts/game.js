@@ -28,8 +28,6 @@ startButton.addEventListener("click", () => {
 function initGame(name, color) {
     playerCar = new Car(1500, 1500, color, name);
     cars.push(playerCar);
-    cars.push(new Car(1400, 1400, "#00ff00", "Бот 1"));
-    cars.push(new Car(1600, 1600, "#0000ff", "Бот 2"));
 
     camera = new Camera(playerCar, world, viewport);
 
