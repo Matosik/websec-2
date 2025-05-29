@@ -19,7 +19,7 @@ let teachersData = [];
 let groupsData = [];
 
 try {
-    const groupsJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'groups.json')));
+    const groupsJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'date/groups.json')));
     groupsData = groupsJson.groups || [];
     console.log('Список групп успешно загружен:', groupsData.length);
 } catch (err) {
@@ -27,7 +27,7 @@ try {
 }
 
 try {
-    const teachersJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'teachers.json')));
+    const teachersJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/teachers.json')));
     teachersData = teachersJson.teachers || [];
     console.log('Список преподавателей успешно загружен:', teachersData.length);
 } catch (err) {
