@@ -1,0 +1,72 @@
+/* TimetableGrid.module.css */
+
+.timetable-grid-cell {
+    padding: 12px;
+    border: 1px solid #e0e3e7;
+    vertical-align: middle;
+    transition: background-color 0.2s ease;
+  }
+  
+  .timetable-empty-slot {
+    background-color: #f8fafc;
+    text-align: center;
+    color: #94a3b8;
+    font-style: italic;
+  }
+  
+  .timetable-time-slot {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    text-align: center;
+    color: #334155;
+    border-right: 2px solid #e2e8f0;
+  }
+  
+  .timetable-lesson-slot {
+    background-color: #ffffff;
+    min-width: 180px;
+  }
+  
+  .lesson-header {
+    font-weight: 600;
+    color: #dc2626;
+    margin-bottom: 6px;
+    font-size: 0.95em;
+  }
+  
+  .lesson-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #1e293b;
+    font-size: 1.05em;
+  }
+  
+  .lesson-location {
+    color: #2563eb;
+    font-size: 0.92em;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .lesson-location::before {
+    content: "📍";
+  }
+  
+  .lesson-instructor,
+  .lesson-student-group {
+    font-size: 0.85em;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .lesson-instructor::before {
+    content: "👤";
+  }
+  
+  .lesson-student-group::before {
+    content: "👥";
+  }
